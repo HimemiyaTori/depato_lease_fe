@@ -27,11 +27,6 @@
 </template>
 
 <script setup lang="tsx">
-import { onMounted, reactive, ref } from 'vue'
-import { ColumnProps } from '@/components/ProTable/src/types'
-import ProTable from '@/components/ProTable/src/ProTable.vue'
-import { useRouter } from 'vue-router'
-import { useHandleData } from '@/hooks/useHandleData'
 import {
   deleteRoomById,
   getApartmentListByDistrictId,
@@ -46,12 +41,17 @@ import {
   RegionInterface,
   RoomInterface,
 } from '@/api/apartmentManagement/types'
+import ProTable from '@/components/ProTable/src/ProTable.vue'
+import { ColumnProps } from '@/components/ProTable/src/types'
 import {
   getLabelByValue,
   RoomCheckInStatus,
   RoomCheckInStatusMap,
   RoomReleaseStatus,
 } from '@/enums/constEnums'
+import { useHandleData } from '@/hooks/useHandleData'
+import { onMounted, reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const router = useRouter()
 

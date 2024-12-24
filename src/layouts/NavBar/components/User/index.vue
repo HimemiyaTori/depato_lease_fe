@@ -10,7 +10,8 @@
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item command="logout">
-          <svg-icon name="logout" size="16px" />
+          <!-- color为默认颜色 -->
+          <svg-icon name="logout" size="16px" color="" />
           <span>退出登陆</span>
         </el-dropdown-item>
       </el-dropdown-menu>
@@ -19,13 +20,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { useUserStore } from '@/store/modules/user'
-import { ArrowUp, ArrowDown } from '@element-plus/icons-vue'
-import { ElMessage, ElMessageBox } from 'element-plus'
-import { LOGIN_URL } from '@/config/config'
 import logoPngUrl from '@/assets/images/logo.png'
+import { LOGIN_URL } from '@/config/config'
+import { useUserStore } from '@/store/modules/user'
+import { ArrowDown, ArrowUp } from '@element-plus/icons-vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { defineComponent, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 export default defineComponent({
   components: {
     ArrowUp,
@@ -96,5 +97,9 @@ export default defineComponent({
     margin: 0 6px;
     cursor: pointer;
   }
+}
+/* 解决按钮黑边框bug */
+:deep(:focus) {
+  outline: 0;
 }
 </style>

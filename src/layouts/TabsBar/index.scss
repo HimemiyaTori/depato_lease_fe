@@ -80,3 +80,8 @@
     }
   }
 }
+
+/* 解决按钮黑边框bug */
+:deep(:focus) {
+  outline: 0;
+}
