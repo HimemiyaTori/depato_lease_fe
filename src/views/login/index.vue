@@ -1,3 +1,85 @@
+<template>
+  <div class="login-container">
+    <el-alert
+      v-show="false"
+      :title="getEnvByName('VITE_APP_TITLE')"
+      type="success"
+      :closable="false"
+      style="position: fixed"
+    ></el-alert>
+    <el-row>
+      <el-col :xs="24" :sm="24" :md="12" :lg="14" :xl="14">
+        <div style="color: transparent">左侧区域占位符</div>
+      </el-col>
+      <el-col :xs="24" :sm="24" :md="12" :lg="10" :xl="10">
+        <el-form
+          ref="ruleFormRef"
+          :model="ruleForm"
+          status-icon
+          :rules="rules"
+          class="login-form"
+        >
+          <div class="form-header">
+            <div class="title">hello !</div>
+            <div class="title-tips">
+              欢迎来到{{ getEnvByName('VITE_APP_TITLE') }}！
+            </div>
+          </div>
+          <el-form-item prop="username">
+            <el-input
+              v-model.trim="ruleForm.username"
+              :prefix-icon="User"
+              autocomplete="off"
+              placeholder="请输入用户名"
+            />
+          </el-form-item>
+          <el-form-item prop="password">
+            <el-input
+              v-model.trim="ruleForm.password"
+              type="password"
+              show-password
+              :prefix-icon="Lock"
+              autocomplete="off"
+              placeholder="请输入密码"
+            />
+          </el-form-item>
+          <el-form-item prop="captchaCode">
+            <el-row>
+              <el-col :span="15">
+                <el-input
+                  v-model.trim="ruleForm.captchaCode"
+                  autocomplete="off"
+                  placeholder="请输入验证码"
+                />
+              </el-col>
+              <el-col :span="8" :offset="1">
+                <el-image
+                  fit="contain"
+                  style="height: 100%; background: white"
+                  class="pointer"
+                  :src="captcha.image"
+                  @click="getCaptcha"
+                />
+              </el-col>
+            </el-row>
+          </el-form-item>
+          <el-form-item>
+            <el-button
+              class="login-btn"
+              type="primary"
+              size="large"
+              :loading="loading"
+              @click="submitForm(ruleFormRef)"
+            >
+              登陆
+            </el-button>
+          </el-form-item>
+        </el-form>
+      </el-col>
+    </el-row>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { getCode, getUserInfo, login } from '@/api/user'
 import { HOME_URL } from '@/config/config'
