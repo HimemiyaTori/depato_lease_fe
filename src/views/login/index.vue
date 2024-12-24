@@ -81,16 +81,16 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive, ref } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { useUserStore } from '@/store/modules/user'
-import type { FormInstance } from 'element-plus'
-import { User, Lock } from '@element-plus/icons-vue'
-import { ElNotification } from 'element-plus'
-import { HOME_URL } from '@/config/config'
-import { timeFix } from '@/utils/index'
 import { getCode, getUserInfo, login } from '@/api/user'
+import { HOME_URL } from '@/config/config'
+import { useUserStore } from '@/store/modules/user'
 import { getEnvByName } from '@/utils/getEnv'
+import { timeFix } from '@/utils/index'
+import { Lock, User } from '@element-plus/icons-vue'
+import type { FormInstance } from 'element-plus'
+import { ElNotification } from 'element-plus'
+import { onMounted, reactive, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 const ruleFormRef = ref<FormInstance>()
@@ -166,6 +166,8 @@ const submitForm = (formEl: FormInstance | undefined) => {
         message: `欢迎回来`,
         type: 'success',
       })
+    } catch (error) {
+      getCaptcha()
     } finally {
       loading.value = false
     }
