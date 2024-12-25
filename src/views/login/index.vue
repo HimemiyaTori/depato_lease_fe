@@ -91,17 +91,23 @@ import type { FormInstance } from 'element-plus'
 import { ElNotification } from 'element-plus'
 import { onMounted, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+
 const router = useRouter()
 const route = useRoute()
 const ruleFormRef = ref<FormInstance>()
 const userStore = useUserStore()
+
+// 规则表单
 const ruleForm = reactive({
   username: 'user',
   password: '123456',
   captchaKey: '',
   captchaCode: '',
 })
+
 const loading = ref(false)
+
+// 验证规则
 const validateUsername = (rule: any, value: string, callback: any) => {
   if (value === '') {
     callback(new Error('用户名不能为空'))
@@ -121,6 +127,7 @@ const validatePassword = (rule: any, value: string, callback: any) => {
     callback()
   }
 }
+
 const validateCaptchaCode = (rule: any, value: string, callback: any) => {
   if (value === '') {
     callback(new Error('验证码不能为空'))
@@ -128,16 +135,19 @@ const validateCaptchaCode = (rule: any, value: string, callback: any) => {
     callback()
   }
 }
+
 const rules = reactive({
   username: [{ required: true, validator: validateUsername }],
   password: [{ required: true, validator: validatePassword }],
   captchaCode: [{ required: true, validator: validateCaptchaCode }],
 })
+
 // 验证码数据
 const captcha = ref({
   image: '',
   key: '',
 })
+
 // 获取验证码
 const getCaptcha = async () => {
   try {
@@ -148,13 +158,24 @@ const getCaptcha = async () => {
     console.log(error)
   }
 }
+
+// 提交表单
 const submitForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.validate(async (valid) => {
     if (!valid) return
+
+    // 在提交表单之前，强制将 captchaCode 转换为小写， 避免大小写问题
+    const captchaCodeLower = ruleForm.captchaCode.toLowerCase()
+
+    const loginData = { 
+      ...ruleForm,
+      captchaCode: captchaCodeLower,
+    }
+
     try {
       loading.value = true
-      const { data } = await login(ruleForm)
+      const { data } = await login(loginData)
       userStore.setToken(data)
       router.replace((route.query.redirect as string) || HOME_URL)
 
@@ -162,8 +183,8 @@ const submitForm = (formEl: FormInstance | undefined) => {
       userStore.setUserInfo(userInfo.data)
 
       ElNotification({
-        title: `hi,${timeFix()}!`,
-        message: `欢迎回来`,
+        title: `hi, ${timeFix()}!`,
+        message: '欢迎回来',
         type: 'success',
       })
     } catch (error) {
@@ -173,10 +194,13 @@ const submitForm = (formEl: FormInstance | undefined) => {
     }
   })
 }
+
+// 在 mounted 时获取验证码
 onMounted(() => {
   getCaptcha()
 })
 </script>
+
 
 <style scoped lang="scss">
 @import './index';
