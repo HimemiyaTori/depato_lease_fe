@@ -32,7 +32,7 @@
               <component is="UserFilled"></component>
             </el-icon>
             <template #title>
-              <span>用户管理</span>
+              <span>后台系统用户管理</span>
             </template>
           </el-menu-item>
           <el-menu-item index="/system/post">
@@ -110,7 +110,7 @@
           <el-icon>
             <component is="User"></component>
           </el-icon>
-          <span>用户管理</span>
+          <span>移动端用户管理</span>
         </el-menu-item>
       </el-menu>
     </el-scrollbar>
