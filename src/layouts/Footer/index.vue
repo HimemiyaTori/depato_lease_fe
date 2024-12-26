@@ -1,9 +1,9 @@
 <template>
-  <div class="layout-footer-container">
+  <!-- <div class="layout-footer-container">
     Copyright
     <svg-icon name="copyright" size="16px" color="rgba(0, 0, 0, 0.45)" />
     {{ fullYear }}
-  </div>
+  </div> -->
 </template>
 
 <script lang="ts">

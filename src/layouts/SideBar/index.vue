@@ -4,7 +4,7 @@
 
     <el-scrollbar>
       <el-menu
-        background-color="#001529"
+        background-color="#017f8b"
         text-color="hsla(0,0%,100%,.65)"
         active-text-color="#fff"
         :defaultActive="activeMenu"

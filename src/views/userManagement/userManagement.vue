@@ -1,5 +1,5 @@
 <template>
-  <el-card>
+  <el-card style="background-color: rgb(255 255 255 / 90%)">
     <ProTable
       ref="proTable"
       :dataCallback="dataCallback"
@@ -36,11 +36,23 @@ const columns: ColumnProps[] = [
     label: '头像',
     render: ({ row }: { row: UserManagementInfoInterface }) => {
       return (
-        <el-image
-          style={{ width: '60px', height: '60px' }}
-          src={row.avatarUrl}
-          fit="cover"
-        ></el-image>
+        <div
+          style={{
+            width: '60px',
+            height: '60px',
+            borderRadius: '50%',
+            overflow: 'hidden',
+            backgroundImage: `url(./avater.jpg)`,
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+          }}
+        ></div>
+        // <el-image
+        //   style={{ width: '60px', height: '60px' }}
+        //   src={row.avatarUrl}
+        //   fit="cover"
+        // ></el-image>
       )
     },
   },

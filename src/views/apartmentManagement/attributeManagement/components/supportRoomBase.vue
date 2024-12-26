@@ -58,11 +58,7 @@
         </el-icon>
       </el-col>
     </el-row>
-    <el-button
-      type="primary"
-      class="m-t-20"
-      @click="addAttrHandle"
-    >
+    <el-button type="primary" class="m-t-20" @click="addAttrHandle">
       添加新属性
     </el-button>
     <!--    信息修改弹窗管理-->

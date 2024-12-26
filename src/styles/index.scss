@@ -40,7 +40,10 @@ html body,
   font-family: 'PingFang SC', Arial, 'Microsoft YaHei', sans-serif;
   font-size: 14px;
   color: var(--el-color-black);
-  background: #f6f8f9;
+  // background: #f6f8f9;
+  background-image: url('../assets/images/bg.png') !important;
+  // background-repeat: no-repeat;
+  background-size: cover;
   -webkit-font-smoothing: antialiased;
   @include base-scrollbar;
 
