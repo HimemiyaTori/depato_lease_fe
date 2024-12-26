@@ -1,5 +1,5 @@
 <template>
-  <el-card>
+  <el-card style="background-color: rgb(255 255 255 / 90%)">
     <template #header>
       <div class="card-header">
         <span>{{ formData.id ? '修改' : '新增' }}房间</span>

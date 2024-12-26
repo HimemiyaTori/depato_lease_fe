@@ -1,5 +1,5 @@
 <template>
-  <el-card>
+  <el-card style="background-color: rgb(255 255 255 / 90%)">
     <ProTable
       ref="proTable"
       :dataCallback="dataCallback"

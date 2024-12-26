@@ -1,5 +1,5 @@
 <template>
-  <el-card>
+  <el-card style="background-color: rgb(255 255 255 / 90%)">
     <!--    配套信息管理-->
     <SupportFacility></SupportFacility>
     <!--    标签信息管理-->

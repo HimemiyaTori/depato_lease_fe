@@ -1,5 +1,5 @@
 <template>
-  <el-card>
+  <el-card style="background-color: rgb(255 255 255 / 90%)">
     <template #header>
       <div class="card-header">
         <span>{{ formData.id ? '修改' : '新增' }}公寓</span>
@@ -525,7 +525,7 @@ async function getApartmentInfoByIdHandle(id: number | string) {
     formData.value = data as FormDataInstance
     // 重置省市区
     // 获取城市
-    console.log(formData.value.provinceId, formData.value.cityId)
+    // console.log('获取城市id', formData.value.provinceId, formData.value.cityId)
     formData.value.provinceId && getCityListHandle(formData.value.provinceId)
     // 获取区域
     formData.value.cityId && getDistrictListHandle(formData.value.cityId)
