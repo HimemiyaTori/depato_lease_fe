@@ -67,13 +67,11 @@ const userInfo = userStore.userInfo
     .img {
       width: 100%;
       height: 73vh;
-      // width: auto;
       background: url('/src/assets/images/trans_124939624_p0.png');
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
     }
-    // height: '400px';
   }
 }
 </style>
