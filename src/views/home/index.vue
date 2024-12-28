@@ -15,7 +15,8 @@
     </el-card>
 
     <div class="welcome">
-      <SvgIcon name="welcome" size="400px" />
+      <div class="img"></div>
+      <!-- <SvgIcon name="welcome" size="400px" /> -->
     </div>
   </div>
 </template>
@@ -63,6 +64,14 @@ const userInfo = userStore.userInfo
     align-items: center;
     justify-content: center;
     height: 100%;
+    .img {
+      width: 100%;
+      height: 73vh;
+      background: url('/src/assets/images/trans_124939624_p0.png');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
   }
 }
 </style>

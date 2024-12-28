@@ -40,9 +40,10 @@ const columns: ColumnProps[] = [
           style={{
             width: '60px',
             height: '60px',
+            margin: '0 auto',
             borderRadius: '50%',
             overflow: 'hidden',
-            backgroundImage: `url(./avater.jpg)`,
+            backgroundImage: `url('/src/assets/images/avater.jpg')`,
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
